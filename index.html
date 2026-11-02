@@ -93,6 +93,32 @@ h1,h2,h3{margin:0;text-wrap:balance}
 .contact{font-family:var(--doto);font-weight:700;letter-spacing:.08em;font-size:14px;background:var(--tinta);color:var(--neon);padding:12px 16px;border-radius:4px;display:inline-block;user-select:all}
 .out{display:none;background:var(--tinta);color:var(--papel);padding:16px;border-radius:4px;white-space:pre-wrap;font-size:14px;line-height:1.5} .out.show{display:block}
 .toast{font-family:var(--doto);font-weight:700;letter-spacing:.08em;font-size:11px;text-transform:uppercase;color:var(--tinta)}
+/* show */
+.show-hero{display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:end} @media (max-width:900px){.show-hero{grid-template-columns:1fr}}
+.show-name{font-size:clamp(52px,9vw,128px)}
+.vids{display:grid;grid-template-columns:2fr 1fr 1fr;grid-auto-rows:240px;gap:10px} .vids .big{grid-row:span 2} @media (max-width:900px){.vids{grid-template-columns:1fr 1fr;grid-auto-rows:200px} .vids .big{grid-column:1/-1;grid-row:auto;min-height:260px}}
+.vid{position:relative;overflow:hidden;border-radius:6px;background:#1a1a1d;background-image:radial-gradient(#0B0A0C 1.2px,transparent 1.4px);background-size:6px 6px;display:flex;align-items:flex-end;padding:14px;color:var(--prata);min-width:0}
+.vid video,.vid img.poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.vid .play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:64px;height:64px;border-radius:50%;background:var(--neon);display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 6px rgba(255,26,207,.25)}
+.vid .play::after{content:"";border-left:20px solid var(--tinta);border-top:12px solid transparent;border-bottom:12px solid transparent;margin-left:5px}
+.vid .cap{position:relative;z-index:2;display:flex;flex-direction:column;gap:4px} .vid .cap b{font-family:var(--anton);font-weight:400;text-transform:uppercase;font-size:22px;color:var(--papel);line-height:1}
+.vid:hover .play{transform:translate(-50%,-50%) scale(1.06)}
+.shots{display:grid;grid-template-columns:repeat(6,1fr);gap:8px} .shots .ph{min-height:150px;cursor:zoom-in} .shots .ph.w2{grid-column:span 2} @media (max-width:900px){.shots{grid-template-columns:repeat(2,1fr)} .shots .ph.w2{grid-column:span 2}}
+.shots .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.formats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px} @media (max-width:900px){.formats{grid-template-columns:1fr}}
+.fmt{border:1px solid rgba(244,241,238,.25);border-radius:6px;padding:22px;display:flex;flex-direction:column;gap:10px;min-width:0} .fmt.hot{background:var(--neon);color:var(--tinta);border-color:var(--neon)}
+.fmt h3{font-family:var(--anton);font-weight:400;text-transform:uppercase;font-size:34px;line-height:.95} .fmt ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:6px;font-size:15px} .fmt li::before{content:"✕ ";color:var(--neon)} .fmt.hot li::before{color:var(--tinta)}
+/* som */
+.som{display:grid;grid-template-columns:1fr 1.25fr;gap:44px;align-items:start} @media (max-width:900px){.som{grid-template-columns:1fr}}
+.arc{display:flex;flex-direction:column;min-width:0} .som>*{min-width:0}
+.arc .blk{display:grid;grid-template-columns:64px minmax(0,1fr) 56px;gap:14px;align-items:center;padding:12px 0;border-top:1px solid rgba(11,10,12,.2)}
+.arc .blk:last-child{border-bottom:1px solid rgba(11,10,12,.2)}
+.arc .t{font-family:var(--doto);font-weight:700;font-size:12px;letter-spacing:.08em} .arc b{font-family:var(--anton);font-weight:400;text-transform:uppercase;font-size:24px;line-height:1} .arc small{display:block;font-size:13px;opacity:.75}
+.bpm{height:8px;border-radius:4px;background:rgba(11,10,12,.12);position:relative;overflow:hidden} .bpm i{position:absolute;left:0;top:0;bottom:0;background:var(--tinta);border-radius:4px}
+.chips{display:flex;flex-wrap:wrap;gap:8px} .chip{font-family:var(--doto);font-weight:700;font-size:12px;letter-spacing:.08em;text-transform:uppercase;border:2px solid var(--tinta);border-radius:999px;padding:7px 12px}
+.themes{display:grid;grid-template-columns:repeat(4,1fr);gap:8px} @media (max-width:600px){.themes{grid-template-columns:repeat(2,1fr)}}
+.theme{border-radius:6px;padding:14px;min-height:120px;display:flex;flex-direction:column;justify-content:space-between;gap:8px} .theme b{font-family:var(--anton);font-weight:400;text-transform:uppercase;font-size:22px;line-height:1} .theme span{font-family:var(--doto);font-weight:700;font-size:10px;letter-spacing:.08em;text-transform:uppercase}
+.lb{position:fixed;inset:0;z-index:80;background:rgba(11,10,12,.94);display:flex;align-items:center;justify-content:center;padding:max(16px,env(safe-area-inset-top,0px)) var(--gx2) max(16px,env(safe-area-inset-bottom,0px)) var(--gx)} .lb img,.lb video{max-width:100%;max-height:100%;border-radius:6px} .lb button{position:absolute;right:calc(16px + env(safe-area-inset-right,0px));top:calc(16px + env(safe-area-inset-top,0px));background:var(--neon);color:var(--tinta);border:0;border-radius:999px;width:44px;height:44px;font-size:22px;cursor:pointer}
 /* footer */
 .foot{border-top:2px solid var(--papel);padding-block:40px 24px} .foot .cols{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:28px;font-size:14px;line-height:1.8} @media (max-width:800px){.foot .cols{grid-template-columns:1fr 1fr}} @media (max-width:480px){.foot .cols{grid-template-columns:1fr}}
 .foot .h{font-family:var(--doto);font-weight:700;letter-spacing:.1em;font-size:11px;color:var(--lilas);margin-bottom:4px;text-transform:uppercase}
@@ -106,7 +132,7 @@ h1,h2,h3{margin:0;text-wrap:balance}
 <nav class="nav" id="nav"><div class="in">
   <a class="brand" href="#top"><svg viewBox="26 8 429 451" aria-hidden="true"><path fill="#FF1ACF" fill-rule="evenodd" d="M441 15 433 12 419 12 406 16 386 26 356 48 326 79 311 99 295 127 282 158 274 188 268 193 260 194 255 196 250 196 245 198 233 198 227 196 217 183 203 158 200 155 187 134 166 110 147 93 105 60 83 47 80 47 74 43 62 40 51 40 44 42 39 45 33 52 30 60 30 78 34 97 41 117 53 142 75 178 95 202 121 228 149 356 172 423 186 438 192 442 211 451 227 455 269 455 270 454 296 453 297 452 307 452 308 451 331 449 355 443 373 433 387 423 397 413 406 401 415 383 418 372 419 350 418 349 417 337 413 323 389 262 383 251 366 231 365 221 375 209 389 186 406 163 408 158 416 146 429 117 447 62 448 51 451 38 451 29 449 23ZM249 264 252 267 255 273 254 280 232 308 231 311 260 334 263 340 263 344 260 350 257 353 252 355 248 355 243 353 217 332 214 331 190 361 185 363 181 363 176 361 173 358 170 352 171 345 193 317 194 314 165 291 162 285 162 281 165 275 168 272 173 270 177 270 182 272 208 293 211 294 235 264 240 262 244 262ZM374 251 377 254 380 260 379 267 357 295 356 298 385 321 388 327 388 331 385 337 382 340 377 342 373 342 368 340 342 319 339 318 315 348 310 350 306 350 301 348 298 345 295 339 296 332 318 304 319 301 290 278 287 272 287 268 290 262 293 259 298 257 302 257 307 259 333 280 336 281 360 251 365 249 369 249Z"/></svg><span class="anton" style="font-size:22px">Bad Bunnies</span><span class="doto" style="color:var(--prata);font-size:10px">Lisboa</span></a>
   <div class="links" id="links">
-    <a href="#conceito"><span class="pt">Conceito</span><span class="es">Concepto</span></a><a href="#noites"><span class="pt">Datas</span><span class="es">Fechas</span></a><a href="#tour">Tour</a><a href="#fas"><span class="pt">Fãs</span><span class="es">Fans</span></a><a href="#booking">Booking</a>
+    <a href="#conceito"><span class="pt">Conceito</span><span class="es">Concepto</span></a><a href="#noites"><span class="pt">Datas</span><span class="es">Fechas</span></a><a href="#show">Show</a><a href="#som"><span class="pt">Som</span><span class="es">Sonido</span></a><a href="#tour">Tour</a><a href="#fas"><span class="pt">Fãs</span><span class="es">Fans</span></a><a href="#booking">Booking</a>
   </div>
   <div class="navr">
     <div class="lang" role="group" aria-label="Idioma"><button type="button" data-lang="pt" aria-pressed="true">PT</button><span class="doto" style="color:var(--prata)">·</span><button type="button" data-lang="es" aria-pressed="false">ES</button></div>
@@ -150,6 +176,80 @@ h1,h2,h3{margin:0;text-wrap:balance}
       <div class="row"><div><div class="d">[DD]</div><div class="doto"><span class="pt">Sex · [MÊS]</span><span class="es">Vie · [MES]</span></div></div><div><div class="t">Ladies Night</div><div class="s"><span class="pt">Modo Bunny · entrada livre para elas até à 01:00</span><span class="es">Modo Bunny · entrada libre para ellas hasta la 01:00</span></div></div><span class="btn ghost cta" style="height:42px;font-size:16px"><span class="pt">Em breve</span><span class="es">Pronto</span></span></div>
       <div class="row"><div><div class="d">[DD]</div><div class="doto"><span class="pt">Sáb · [MÊS]</span><span class="es">Sáb · [MES]</span></div></div><div><div class="t">Benito Night</div><div class="s"><span class="pt">Só músicas dele, do princípio ao fim · pava obrigatória</span><span class="es">Solo canciones suyas, de principio a fin · pava obligatoria</span></div></div><span class="pill cta" style="font-size:14px;color:var(--prata);border-color:var(--prata)"><span class="pt">Esgotado</span><span class="es">Agotado</span></span></div>
       <div class="row"><div><div class="d">[DD]</div><div class="doto"><span class="pt">Sex · [MÊS]</span><span class="es">Vie · [MES]</span></div></div><div><div class="t">Un Verano en Lisboa</div><div class="s"><span class="pt">Open air · palmeiras, coquís e sol até tarde · 18:00</span><span class="es">Open air · palmeras, coquís y sol hasta tarde · 18:00</span></div></div><a class="btn ghost cta" style="height:42px;font-size:16px" href="#" data-list><span class="pt">Lista</span><span class="es">Lista</span></a></div>
+    </div>
+  </div>
+</div></section>
+
+<section class="sec" id="show" style="border-top:1px solid rgba(244,241,238,.18)"><div class="in" style="display:flex;flex-direction:column;gap:30px">
+  <div class="show-hero">
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div class="doto eyebrow"><span class="pt">O show · ao vivo</span><span class="es">El show · en directo</span></div>
+      <h2 class="anton show-name">Bad Bunnies<br><span style="color:var(--neon)">Benito Show</span></h2>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <p class="lead" style="margin:0"><span class="pt">Uma noite inteira dentro do universo do Benito: DJs residentes, host ao microfone, El Conejo na pista, cenografia néon e um alinhamento que vai do dembow ao amanhecer. Não é um tributo, é uma festa com identidade própria.</span><span class="es">Una noche entera dentro del universo de Benito: DJs residentes, host al micro, El Conejo en la pista, escenografía neón y un setlist que va del dembow al amanecer. No es un tributo, es una fiesta con identidad propia.</span></p>
+      <div style="display:flex;gap:10px;flex-wrap:wrap"><a class="btn" href="#booking" data-fmt="Bad Bunnies Night"><span class="pt">Booking do show</span><span class="es">Booking del show</span></a><a class="btn ghost" href="#" data-press><span class="pt">Press kit</span><span class="es">Press kit</span></a></div>
+    </div>
+  </div>
+
+  <div class="vids" id="vids">
+    <a class="vid big" href="#" data-v="0"><span class="play" aria-hidden="true"></span><div class="cap"><span class="doto"><span class="pt">Aftermovie</span><span class="es">Aftermovie</span> · 60s</span><b><span class="pt">Isto é a Bad Bunnies</span><span class="es">Esto es Bad Bunnies</span></b></div></a>
+    <a class="vid" href="#" data-v="1"><span class="play" aria-hidden="true"></span><div class="cap"><span class="doto">Reel</span><b><span class="pt">A pista às 3h</span><span class="es">La pista a las 3h</span></b></div></a>
+    <a class="vid" href="#" data-v="2"><span class="play" aria-hidden="true"></span><div class="cap"><span class="doto">Reel</span><b>El Conejo</b></div></a>
+    <a class="vid" href="#" data-v="3"><span class="play" aria-hidden="true"></span><div class="cap"><span class="doto">Live</span><b>Benito Night</b></div></a>
+    <a class="vid" href="#" data-v="4"><span class="play" aria-hidden="true"></span><div class="cap"><span class="doto">Reel</span><b>Coimbra · Algarve</b></div></a>
+  </div>
+
+  <div style="display:flex;flex-direction:column;gap:12px">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap"><h3 class="anton" style="font-size:clamp(30px,4.5vw,48px)"><span class="pt">Fotos dos shows</span><span class="es">Fotos de los shows</span></h3><div class="doto" style="color:var(--lilas)"><span class="pt">Toca para ampliar</span><span class="es">Toca para ampliar</span></div></div>
+    <div class="shots" id="shots">
+      <div class="ph w2" data-p="0">[<span class="pt">Palco · luzes</span><span class="es">Escenario · luces</span>]</div>
+      <div class="ph lilas" data-p="1">[Host]</div>
+      <div class="ph" data-p="2">[<span class="pt">Pista cheia</span><span class="es">Pista llena</span>]</div>
+      <div class="ph w2" data-p="3">[DJ booth]<img class="stk" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAgMjAwIj48cGF0aCBkPSJNNjAgMzAgTDE0MCAzMCBMMTM0IDEwMCBMNjYgMTAwIFoiIGZpbGw9IiNGNEYxRUUiIHN0cm9rZT0iIzBCMEEwQyIgc3Ryb2tlLXdpZHRoPSI4IiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPHBhdGggZD0iTTUwIDEwMCBMMTUwIDEwMCBMMTQ2IDEyMiBMNTQgMTIyIFoiIGZpbGw9IiNGNEYxRUUiIHN0cm9rZT0iIzBCMEEwQyIgc3Ryb2tlLXdpZHRoPSI4IiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPHBhdGggZD0iTTU4IDEyMiBMNTAgMTgwIE0xNDIgMTIyIEwxNTAgMTgwIE03MCAxMjIgTDY2IDE2MCBNMTMwIDEyMiBMMTM0IDE2MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMEIwQTBDIiBzdHJva2Utd2lkdGg9IjgiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8cGF0aCBkPSJNNzggNDggTDEyMiA0OCBNNzggNjQgTDEyMiA2NCBNNzggODAgTDEyMiA4MCIgc3Ryb2tlPSIjMEIwQTBDIiBzdHJva2Utd2lkdGg9IjQiIG9wYWNpdHk9IjAuNSIvPgo8Y2lyY2xlIGN4PSIxMDAiIGN5PSIxMTIiIHI9IjYiIGZpbGw9IiNGRjFBQ0YiLz48L3N2Zz4=" alt="" style="right:10px;top:10px;transform:rotate(8deg);width:70px"></div>
+      <div class="ph" data-p="4">[El Conejo]</div>
+      <div class="ph chic" data-p="5">[Ladies Night]</div>
+      <div class="ph w2" data-p="6">[<span class="pt">Público · pávas</span><span class="es">Público · pavas</span>]<img class="stk" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAgMjAwIj48cGF0aCBkPSJNNjAgMTAwIEM2MCA3MCA4MCA1MCAxMDAgNTAgQzEyMCA1MCAxNDAgNzAgMTQwIDEwMCBaIiBmaWxsPSIjRjJEMjdBIiBzdHJva2U9IiMwQjBBMEMiIHN0cm9rZS13aWR0aD0iOCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CjxwYXRoIGQ9Ik0yMCAxMTAgQzQwIDk2IDE2MCA5NiAxODAgMTEwIEMxNzAgMTI2IDMwIDEyNiAyMCAxMTAgWiIgZmlsbD0iI0YyRDI3QSIgc3Ryb2tlPSIjMEIwQTBDIiBzdHJva2Utd2lkdGg9IjgiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8cGF0aCBkPSJNNjIgMTAwIEwxMzggMTAwIiBzdHJva2U9IiNGRjFBQ0YiIHN0cm9rZS13aWR0aD0iMTAiLz4KPHBhdGggZD0iTTcwIDcyIEwxMzAgNzIgTTY2IDg2IEwxMzQgODYiIHN0cm9rZT0iIzBCMEEwQyIgc3Ryb2tlLXdpZHRoPSIzIiBvcGFjaXR5PSIwLjUiLz4KPHRleHQgeD0iMTAwIiB5PSIxNzAiIGZvbnQtZmFtaWx5PSJJbXBhY3QsIEFudG9uLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjIyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjMEIwQTBDIj5MQSBQQVZBPC90ZXh0Pjwvc3ZnPg==" alt="" style="left:10px;top:10px;transform:rotate(-10deg);width:70px"></div>
+      <div class="ph" data-p="7">[Confetti]</div>
+      <div class="ph" data-p="8">[<span class="pt">Fila à porta</span><span class="es">Fila en la puerta</span>]</div>
+    </div>
+  </div>
+
+  <div class="formats">
+    <div class="fmt"><div class="doto" style="color:var(--lilas)">Club · 5–6h</div><h3>Benito Club</h3><ul><li><span class="pt">2 DJs residentes + host</span><span class="es">2 DJs residentes + host</span></li><li><span class="pt">Kit néon e stickers</span><span class="es">Kit neón y stickers</span></li><li><span class="pt">Flyer, story e reel na nossa identidade</span><span class="es">Flyer, story y reel con nuestra identidad</span></li></ul></div>
+    <div class="fmt hot"><div class="doto">Signature · 6h</div><h3>Benito Signature</h3><ul><li><span class="pt">Show completo + El Conejo em tamanho real</span><span class="es">Show completo + El Conejo a tamaño real</span></li><li><span class="pt">Cenografia: cadeiras, palmeiras, pávas, LED</span><span class="es">Escenografía: sillas, palmeras, pavas, LED</span></li><li><span class="pt">Fotógrafo e aftermovie</span><span class="es">Fotógrafo y aftermovie</span></li></ul></div>
+    <div class="fmt"><div class="doto" style="color:var(--lilas)">Takeover · 4h</div><h3>Benito Takeover</h3><ul><li><span class="pt">Palco ou tenda de festival</span><span class="es">Escenario o carpa de festival</span></li><li><span class="pt">Residentes + convidado</span><span class="es">Residentes + invitado</span></li><li><span class="pt">Activação com fotos e merch</span><span class="es">Activación con fotos y merch</span></li></ul></div>
+  </div>
+  <div style="display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;border-top:1px dashed rgba(244,241,238,.3);padding-top:18px"><div class="doto" style="color:var(--prata)"><span class="pt">Portugal · Espanha · festivais · marcas · universidades</span><span class="es">Portugal · España · festivales · marcas · universidades</span></div><a class="btn" href="#booking" data-fmt="Bad Bunnies Night"><span class="pt">Pedir proposta para o show</span><span class="es">Pedir propuesta para el show</span></a></div>
+</div></section>
+
+<section class="sec paper" id="som"><div class="in som">
+  <div style="display:flex;flex-direction:column;gap:18px">
+    <div class="doto eyebrow"><span class="pt">Identidade musical</span><span class="es">Identidad musical</span></div>
+    <h2 class="anton h2"><span class="pt">O som da<br><span style="color:var(--neon)">toca</span></span><span class="es">El sonido de<br>la <span style="color:var(--neon)">toca</span></span></h2>
+    <p class="lead" style="margin:0"><span class="pt">Reggaetón de raiz porto-riquenha com o Benito como espinha dorsal, misturado com o que se ouve hoje em Lisboa e Madrid. Clássicos que toda a gente canta, novidades antes de toda a gente, e uma hora só dele.</span><span class="es">Reggaetón de raíz puertorriqueña con Benito como columna vertebral, mezclado con lo que suena hoy en Lisboa y Madrid. Clásicos que todo el mundo canta, novedades antes que nadie, y una hora solo suya.</span></p>
+    <div class="chips"><span class="chip">Reggaetón</span><span class="chip">Perreo old school</span><span class="chip">Dembow</span><span class="chip">Latin trap</span><span class="chip">Moombahton</span><span class="chip">Dancehall</span><span class="chip">Baile funk</span></div>
+    <div class="themes">
+      <div class="theme" style="background:var(--tinta);color:var(--papel)"><span style="color:var(--neon)"><span class="pt">Tema</span><span class="es">Tema</span></span><b>Neon Toca</b><span>La toca está prendida</span></div>
+      <div class="theme" style="background:#B8B8BE;color:var(--tinta)"><span><span class="pt">Tema</span><span class="es">Tema</span></span><b>Cromo</b><span>Brilla hasta el amanecer</span></div>
+      <div class="theme" style="background:#FF7A1A;color:var(--tinta)"><span><span class="pt">Tema</span><span class="es">Tema</span></span><b>Verano</b><span>Verano en la toca</span></div>
+      <div class="theme" style="background:var(--neon);color:var(--tinta)"><span><span class="pt">Tema</span><span class="es">Tema</span></span><b>Candy Perreo</b><span>Perreo sin frenos</span></div>
+    </div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap"><a class="btn dark" href="#" data-playlist><span class="pt">Ouvir a playlist</span><span class="es">Escuchar la playlist</span></a><a class="btn paper" href="#" data-mix><span class="pt">Último set</span><span class="es">Último set</span></a></div>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:14px;min-width:0">
+    <div class="doto"><span class="pt">Arco da noite · BPM</span><span class="es">Arco de la noche · BPM</span></div>
+    <div class="arc">
+      <div class="blk"><span class="t">23:59</span><div><b><span class="pt">Calentamiento</span><span class="es">Calentamiento</span></b><small><span class="pt">Dembow e reggaetón suave, a sala a encher</span><span class="es">Dembow y reggaetón suave, la sala llenándose</span></small></div><div class="bpm" title="90 BPM"><i style="width:55%"></i></div></div>
+      <div class="blk"><span class="t">01:00</span><div><b>Perreo old school</b><small><span class="pt">Os clássicos que toda a gente canta</span><span class="es">Los clásicos que todo el mundo canta</span></small></div><div class="bpm" title="95 BPM"><i style="width:68%"></i></div></div>
+      <div class="blk"><span class="t">02:00</span><div><b style="color:var(--neon)"><span class="pt">A hora do Benito</span><span class="es">La hora de Benito</span></b><small><span class="pt">Só ele, do princípio ao fim. Host ao micro, El Conejo na pista</span><span class="es">Solo él, de principio a fin. Host al micro, El Conejo en la pista</span></small></div><div class="bpm" title="96 BPM"><i style="width:82%;background:var(--neon)"></i></div></div>
+      <div class="blk"><span class="t">03:00</span><div><b>Latin trap</b><small><span class="pt">Baixa o tempo, sobe a intensidade</span><span class="es">Baja el tempo, sube la intensidad</span></small></div><div class="bpm" title="140 half-time"><i style="width:74%"></i></div></div>
+      <div class="blk"><span class="t">04:00</span><div><b>Perreo sin frenos</b><small><span class="pt">Moombahton e dembow rápido</span><span class="es">Moombahton y dembow rápido</span></small></div><div class="bpm" title="105 BPM"><i style="width:96%"></i></div></div>
+      <div class="blk"><span class="t">05:30</span><div><b><span class="pt">Amanecer</span><span class="es">Amanecer</span></b><small><span class="pt">Fecho com o hino da casa</span><span class="es">Cierre con el himno de la casa</span></small></div><div class="bpm" title="92 BPM"><i style="width:60%"></i></div></div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+      <div class="ph" style="min-height:140px">[DJ <span class="pt">residente</span><span class="es">residente</span> 1]</div>
+      <div class="ph lilas" style="min-height:140px">[DJ <span class="pt">residente</span><span class="es">residente</span> 2]</div>
     </div>
   </div>
 </div></section>
@@ -228,7 +328,7 @@ h1,h2,h3{margin:0;text-wrap:balance}
 <footer class="foot"><div class="in">
   <div class="cols">
     <div><div class="brand" style="margin-bottom:10px"><svg viewBox="26 8 429 451" aria-hidden="true" style="width:40px"><path fill="#FF1ACF" fill-rule="evenodd" d="M441 15 433 12 419 12 406 16 386 26 356 48 326 79 311 99 295 127 282 158 274 188 268 193 260 194 255 196 250 196 245 198 233 198 227 196 217 183 203 158 200 155 187 134 166 110 147 93 105 60 83 47 80 47 74 43 62 40 51 40 44 42 39 45 33 52 30 60 30 78 34 97 41 117 53 142 75 178 95 202 121 228 149 356 172 423 186 438 192 442 211 451 227 455 269 455 270 454 296 453 297 452 307 452 308 451 331 449 355 443 373 433 387 423 397 413 406 401 415 383 418 372 419 350 418 349 417 337 413 323 389 262 383 251 366 231 365 221 375 209 389 186 406 163 408 158 416 146 429 117 447 62 448 51 451 38 451 29 449 23ZM249 264 252 267 255 273 254 280 232 308 231 311 260 334 263 340 263 344 260 350 257 353 252 355 248 355 243 353 217 332 214 331 190 361 185 363 181 363 176 361 173 358 170 352 171 345 193 317 194 314 165 291 162 285 162 281 165 275 168 272 173 270 177 270 182 272 208 293 211 294 235 264 240 262 244 262ZM374 251 377 254 380 260 379 267 357 295 356 298 385 321 388 327 388 331 385 337 382 340 377 342 373 342 368 340 342 319 339 318 315 348 310 350 306 350 301 348 298 345 295 339 296 332 318 304 319 301 290 278 287 272 287 268 290 262 293 259 298 257 302 257 307 259 333 280 336 281 360 251 365 249 369 249Z"/></svg><span class="anton" style="font-size:26px">Bad Bunnies</span></div><div class="script" style="font-size:30px">It's so good to be bad</div></div>
-    <div><div class="h"><span class="pt">A festa</span><span class="es">La fiesta</span></div><a href="#conceito"><span class="pt">Conceito</span><span class="es">Concepto</span></a><br><a href="#noites"><span class="pt">Próximas datas</span><span class="es">Próximas fechas</span></a><br><a href="#tour">Tour</a><br>Modo Bunny · Ladies Night</div>
+    <div><div class="h"><span class="pt">A festa</span><span class="es">La fiesta</span></div><a href="#conceito"><span class="pt">Conceito</span><span class="es">Concepto</span></a><br><a href="#noites"><span class="pt">Próximas datas</span><span class="es">Próximas fechas</span></a><br><a href="#show">Benito Show</a><br><a href="#tour">Tour</a><br>Modo Bunny · Ladies Night</div>
     <div><div class="h"><span class="pt">Pessoas</span><span class="es">Gente</span></div><a href="#fas"><span class="pt">Fãs e fotos</span><span class="es">Fans y fotos</span></a><br><a href="#" data-ig>@badbunnieslisbon</a><br><span class="pt">Residentes</span><span class="es">Residentes</span></div>
     <div><div class="h">Contacto</div><a href="#booking">Booking</a><br><span class="pt">Parcerias e sponsors</span><span class="es">Alianzas y sponsors</span><br><a href="#" data-wa>WhatsApp</a></div>
   </div>
@@ -243,7 +343,16 @@ const CFG = {
   LIST:    'https://instagram.com/badbunnieslisbon', // lista / ladies list
   IG:      'https://instagram.com/badbunnieslisbon',
   EMAIL:   '',                                  // ex.: booking@badbunnies.pt
-  WA:      ''                                   // ex.: 351912345678 (só dígitos)
+  WA:      '',
+  PLAYLIST:'',                                  // Spotify / Apple Music / YouTube
+  MIX:     '',                                  // SoundCloud / Mixcloud do último set
+  PRESS:   '',                                  // link do press kit (Drive / PDF)
+  // Vídeos: url = link do reel/YouTube; src = ficheiro .mp4 no repositório (ex.: 'video/aftermovie.mp4'); poster = imagem
+  VIDEOS: [
+    {url:'', src:'', poster:''}, {url:'', src:'', poster:''}, {url:'', src:'', poster:''}, {url:'', src:'', poster:''}, {url:'', src:'', poster:''}
+  ],
+  // Fotos dos shows: caminhos no repositório (ex.: 'img/show-01.jpg'), pela ordem da grelha
+  PHOTOS: ['','','','','','','','','']                                   // ex.: 351912345678 (só dígitos)
 };
 // ────────────────────────────────────────────────────────────────────────
 const site = document.getElementById('site');
@@ -289,6 +398,34 @@ form.addEventListener('submit',e=>{
   document.getElementById('waOut').href = 'https://wa.me/'+(CFG.WA||'')+'?text='+encodeURIComponent(txt);
   document.getElementById('toast').textContent = es ? 'Solicitud generada. Cópiala o ábrela en tu app.' : 'Pedido gerado. Copia-o ou abre na tua app.';
 });
+
+// ── show: vídeos, fotos, lightbox, links ───────────────────────────────
+function lightbox(node){
+  const lb=document.createElement('div'); lb.className='lb'; lb.setAttribute('role','dialog'); lb.setAttribute('aria-modal','true');
+  const x=document.createElement('button'); x.type='button'; x.setAttribute('aria-label','Fechar'); x.textContent='×';
+  lb.appendChild(node); lb.appendChild(x); document.body.appendChild(lb); x.focus();
+  const close=()=>{ lb.remove(); document.removeEventListener('keydown',esc); };
+  const esc=e=>{ if(e.key==='Escape') close(); };
+  x.addEventListener('click',close); lb.addEventListener('click',e=>{ if(e.target===lb) close(); }); document.addEventListener('keydown',esc);
+}
+document.querySelectorAll('#vids [data-v]').forEach(a=>{
+  const v=(CFG.VIDEOS||[])[+a.dataset.v]||{};
+  if(v.poster){ const im=document.createElement('img'); im.className='poster'; im.src=v.poster; im.alt=''; a.prepend(im); }
+  if(v.src){
+    a.addEventListener('click',e=>{ e.preventDefault(); const vd=document.createElement('video'); vd.src=v.src; vd.controls=true; vd.autoplay=true; vd.playsInline=true; if(v.poster) vd.poster=v.poster; lightbox(vd); });
+  } else if(v.url){ a.href=v.url; a.target='_blank'; a.rel='noopener'; }
+  else { a.href=CFG.IG; a.target='_blank'; a.rel='noopener'; }
+});
+document.querySelectorAll('#shots [data-p]').forEach(d=>{
+  const src=(CFG.PHOTOS||[])[+d.dataset.p];
+  if(!src) return;
+  const im=document.createElement('img'); im.src=src; im.alt='Bad Bunnies ao vivo'; im.loading='lazy'; d.prepend(im);
+  d.addEventListener('click',()=>{ const big=document.createElement('img'); big.src=src; big.alt=''; lightbox(big); });
+});
+[['data-playlist','PLAYLIST'],['data-mix','MIX'],['data-press','PRESS']].forEach(([attr,key])=>{
+  document.querySelectorAll('['+attr+']').forEach(a=>{ const u=CFG[key]||CFG.IG; a.href=u; a.target='_blank'; a.rel='noopener'; });
+});
+document.querySelectorAll('[data-fmt]').forEach(a=>a.addEventListener('click',()=>{ const sel=document.getElementById('f4'); if(sel) sel.value=a.dataset.fmt; }));
 document.getElementById('copyOut').addEventListener('click',e=>copy(out.textContent,e.currentTarget));
 </script>
 
