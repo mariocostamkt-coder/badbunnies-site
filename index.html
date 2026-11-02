@@ -96,13 +96,14 @@ h1,h2,h3{margin:0;text-wrap:balance}
 /* show */
 .show-hero{display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:end} @media (max-width:900px){.show-hero{grid-template-columns:1fr}}
 .show-name{font-size:clamp(52px,9vw,128px)}
-.vids{display:grid;grid-template-columns:2fr 1fr 1fr;grid-auto-rows:240px;gap:10px} .vids .big{grid-row:span 2} @media (max-width:900px){.vids{grid-template-columns:1fr 1fr;grid-auto-rows:200px} .vids .big{grid-column:1/-1;grid-row:auto;min-height:260px}}
-.vid{position:relative;overflow:hidden;border-radius:6px;background:#1a1a1d;background-image:radial-gradient(#0B0A0C 1.2px,transparent 1.4px);background-size:6px 6px;display:flex;align-items:flex-end;padding:14px;color:var(--prata);min-width:0}
+.vids{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px;align-items:start} .vid.big{outline:3px solid var(--neon);outline-offset:-3px} @media (max-width:1000px){.vids{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:44%;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:8px;-webkit-overflow-scrolling:touch} .vids .vid{scroll-snap-align:start}} @media (max-width:600px){.vids{grid-auto-columns:62%}}
+.vid{position:relative;overflow:hidden;border-radius:8px;background:#1a1a1d;background-image:radial-gradient(#0B0A0C 1.2px,transparent 1.4px);background-size:6px 6px;display:flex;align-items:flex-end;padding:14px;color:var(--prata);min-width:0;aspect-ratio:9/16;cursor:pointer}
 .vid video,.vid img.poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.vid .play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:64px;height:64px;border-radius:50%;background:var(--neon);display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 6px rgba(255,26,207,.25)}
-.vid .play::after{content:"";border-left:20px solid var(--tinta);border-top:12px solid transparent;border-bottom:12px solid transparent;margin-left:5px}
-.vid .cap{position:relative;z-index:2;display:flex;flex-direction:column;gap:4px} .vid .cap b{font-family:var(--anton);font-weight:400;text-transform:uppercase;font-size:22px;color:var(--papel);line-height:1}
-.vid:hover .play{transform:translate(-50%,-50%) scale(1.06)}
+.vid::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(11,10,12,.85));pointer-events:none}
+.vid .play{position:absolute;right:12px;top:12px;z-index:3;width:42px;height:42px;border-radius:50%;background:var(--neon);display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 5px rgba(255,26,207,.25);transition:transform .15s}
+.vid .play::after{content:"";border-left:14px solid var(--tinta);border-top:9px solid transparent;border-bottom:9px solid transparent;margin-left:4px}
+.vid .cap{position:relative;z-index:2;display:flex;flex-direction:column;gap:4px} .vid .cap b{font-family:var(--anton);font-weight:400;text-transform:uppercase;font-size:clamp(18px,1.7vw,24px);color:var(--papel);line-height:1} .vid.big .cap b{font-size:clamp(22px,2.4vw,34px)}
+.vid:hover .play{transform:scale(1.08)}
 .shots{display:grid;grid-template-columns:repeat(6,1fr);gap:8px} .shots .ph{min-height:150px;cursor:zoom-in} .shots .ph.w2{grid-column:span 2} @media (max-width:900px){.shots{grid-template-columns:repeat(2,1fr)} .shots .ph.w2{grid-column:span 2}}
 .shots .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .formats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px} @media (max-width:900px){.formats{grid-template-columns:1fr}}
@@ -193,11 +194,12 @@ h1,h2,h3{margin:0;text-wrap:balance}
   </div>
 
   <div class="vids" id="vids">
-    <a class="vid big" href="#" data-v="0"><span class="play" aria-hidden="true"></span><div class="cap"><span class="doto"><span class="pt">Festival · ao vivo</span><span class="es">Festival · en directo</span> · Reel</span><b><span class="pt">O show no festival</span><span class="es">El show en el festival</span></b></div></a>
-    <a class="vid" href="#" data-v="1"><span class="play" aria-hidden="true"></span><div class="cap"><span class="doto">Reel</span><b><span class="pt">A pista às 3h</span><span class="es">La pista a las 3h</span></b></div></a>
-    <a class="vid" href="#" data-v="2"><span class="play" aria-hidden="true"></span><div class="cap"><span class="doto">Reel</span><b>El Conejo</b></div></a>
-    <a class="vid" href="#" data-v="3"><span class="play" aria-hidden="true"></span><div class="cap"><span class="doto">Live</span><b>Benito Night</b></div></a>
-    <a class="vid" href="#" data-v="4"><span class="play" aria-hidden="true"></span><div class="cap"><span class="doto">Reel</span><b>Coimbra · Algarve</b></div></a>
+    <div class="vid big" role="button" tabindex="0" data-v="0" aria-label="Ver vídeo"><span class="play" aria-hidden="true"></span><div class="cap"><span class="doto"><span class="pt">Festival Académico de Lisboa</span><span class="es">Festival Académico de Lisboa</span></span><b><span class="pt">O show no festival</span><span class="es">El show en el festival</span></b></div></div>
+    <div class="vid " role="button" tabindex="0" data-v="1" aria-label="Ver vídeo"><span class="play" aria-hidden="true"></span><div class="cap"><span class="doto">El Conejo</span><b><span class="pt">Em palco</span><span class="es">En el escenario</span></b></div></div>
+    <div class="vid " role="button" tabindex="0" data-v="2" aria-label="Ver vídeo"><span class="play" aria-hidden="true"></span><div class="cap"><span class="doto">Kiay · Lisboa</span><b><span class="pt">Chuva de confetti</span><span class="es">Lluvia de confeti</span></b></div></div>
+    <div class="vid " role="button" tabindex="0" data-v="3" aria-label="Ver vídeo"><span class="play" aria-hidden="true"></span><div class="cap"><span class="doto"><span class="pt">Pista</span><span class="es">Pista</span></span><b><span class="pt">Mãos no ar</span><span class="es">Manos arriba</span></b></div></div>
+    <div class="vid " role="button" tabindex="0" data-v="4" aria-label="Ver vídeo"><span class="play" aria-hidden="true"></span><div class="cap"><span class="doto"><span class="pt">Vista da cabine</span><span class="es">Desde la cabina</span></span><b><span class="pt">Sala cheia</span><span class="es">Sala llena</span></b></div></div>
+    <div class="vid " role="button" tabindex="0" data-v="5" aria-label="Ver vídeo"><span class="play" aria-hidden="true"></span><div class="cap"><span class="doto">Live</span><b><span class="pt">Luzes e perreo</span><span class="es">Luces y perreo</span></b></div></div>
   </div>
 
   <div style="display:flex;flex-direction:column;gap:12px">
@@ -349,7 +351,12 @@ const CFG = {
   PRESS:   '',                                  // link do press kit (Drive / PDF)
   // Vídeos: url = link do reel/YouTube; src = ficheiro .mp4 no repositório (ex.: 'video/aftermovie.mp4'); poster = imagem
   VIDEOS: [
-    {url:'https://www.instagram.com/reel/C69QcTworVZ/', src:'', poster:''}, {url:'', src:'', poster:''}, {url:'', src:'', poster:''}, {url:'', src:'', poster:''}, {url:'', src:'', poster:''}
+    {src:'video/festival.mp4', loop:'video/festival-loop.mp4', poster:'video/festival.jpg', url:'https://www.instagram.com/reel/C69QcTworVZ/'},
+    {src:'video/el-conejo.mp4', loop:'video/el-conejo-loop.mp4', poster:'video/el-conejo.jpg', url:''},
+    {src:'video/kiay-confetti.mp4', loop:'video/kiay-confetti-loop.mp4', poster:'video/kiay-confetti.jpg', url:''},
+    {src:'video/pista-cheia.mp4', loop:'video/pista-cheia-loop.mp4', poster:'video/pista-cheia.jpg', url:''},
+    {src:'video/cabine.mp4', loop:'video/cabine-loop.mp4', poster:'video/cabine.jpg', url:''},
+    {src:'video/sala-luzes.mp4', loop:'video/sala-luzes-loop.mp4', poster:'video/sala-luzes.jpg', url:''}
   ],
   // Fotos dos shows: caminhos no repositório (ex.: 'img/show-01.jpg'), pela ordem da grelha
   PHOTOS: ['','','','','','','','','']                                   // ex.: 351912345678 (só dígitos)
@@ -408,14 +415,25 @@ function lightbox(node){
   const esc=e=>{ if(e.key==='Escape') close(); };
   x.addEventListener('click',close); lb.addEventListener('click',e=>{ if(e.target===lb) close(); }); document.addEventListener('keydown',esc);
 }
-document.querySelectorAll('#vids [data-v]').forEach(a=>{
-  const v=(CFG.VIDEOS||[])[+a.dataset.v]||{};
-  if(v.poster){ const im=document.createElement('img'); im.className='poster'; im.src=v.poster; im.alt=''; a.prepend(im); }
-  if(v.src){
-    a.addEventListener('click',e=>{ e.preventDefault(); const vd=document.createElement('video'); vd.src=v.src; vd.controls=true; vd.autoplay=true; vd.playsInline=true; if(v.poster) vd.poster=v.poster; lightbox(vd); });
-  } else if(v.url){ a.href=v.url; a.target='_blank'; a.rel='noopener'; }
-  else { a.href=CFG.IG; a.target='_blank'; a.rel='noopener'; }
+document.querySelectorAll('#vids [data-v]').forEach(card=>{
+  const v=(CFG.VIDEOS||[])[+card.dataset.v]||{};
+  if(v.poster){ const im=document.createElement('img'); im.className='poster'; im.src=v.poster; im.alt=''; im.loading='lazy'; card.prepend(im); }
+  if(v.loop){ const lv=document.createElement('video'); lv.muted=true; lv.loop=true; lv.playsInline=true; lv.setAttribute('playsinline',''); lv.preload='none'; if(v.poster) lv.poster=v.poster; lv.src=v.loop; card.prepend(lv); card._loop=lv; }
+  const open=()=>{
+    if(v.src){ const vd=document.createElement('video'); vd.src=v.src; vd.controls=true; vd.autoplay=true; vd.playsInline=true; vd.setAttribute('playsinline',''); if(v.poster) vd.poster=v.poster; lightbox(vd); vd.play().catch(()=>{}); }
+    else { window.open(v.url||CFG.IG,'_blank','noopener'); }
+  };
+  card.addEventListener('click',open);
+  card.addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); open(); } });
 });
+(function(){
+  const reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const cards=[...document.querySelectorAll('#vids [data-v]')].filter(c=>c._loop);
+  if(reduce||!cards.length) return;
+  if(!('IntersectionObserver' in window)){ cards.forEach(c=>c._loop.play().catch(()=>{})); return; }
+  const io=new IntersectionObserver(es=>es.forEach(e=>{ const lv=e.target._loop; if(e.isIntersecting){ lv.play().catch(()=>{}); } else lv.pause(); }),{threshold:.35});
+  cards.forEach(c=>io.observe(c));
+})();
 document.querySelectorAll('#shots [data-p]').forEach(d=>{
   const src=(CFG.PHOTOS||[])[+d.dataset.p];
   if(!src) return;
