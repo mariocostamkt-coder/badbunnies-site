@@ -29,7 +29,7 @@ Download completo (OTF/TTF): fonts.google.com (procurar cada nome).
 CONTEÚDO DAS PASTAS
 01 Logos ............ chrome principal (PNG + PDF), chrome flat (proposta), neon (SVG/PNG), ícones (SVG/PNG)
 02 El Conejo ........ 4 looks (bandana, capuz, boné, auscultadores) em SVG + PNG
-03 Stickers PR ...... coquí, pava, palmera, dominó, bandeira PR, cadeira (SVG + PNG) + versão recortada a branco
+03 Stickers PR ...... coquí, pava, palmera, dominó, bandeira PR, cadeira (SVG + PNG) + versão com rebordo branco e chrome (pasta com-rebordo-branco-e-chrome)
 04 Frases ........... frases da marca em PNG (hasta abajo, la toca está prendida, mala pero bonita, 100% perreo…)
 05 Key visuals ...... hero 16:9, feed 4:5, story 9:16 (já com o logo final) + cadeira 3D
 07 Paleta ........... folha de cores, .txt e tokens CSS
@@ -48,3 +48,8 @@ PEDIDOS AO DESIGNER (prioridade)
 2. Rever a página 8 do Booking (o mockup do telemóvel usa um coelho com óculos — trocar por foto real).
 3. Cartaz A3 + template de flyer por cidade (campos: cidade, data, espaço) com o logo principal.
 4. Kit de merch: t-shirt, bracelete, sticker sheet, lanyard.
+
+STICKERS — REGRA
+Todos os stickers saem com rebordo branco (recorte) + rebordo exterior em chrome.
+Versões prontas em 03 Stickers PR/com-rebordo-branco-e-chrome. A cadeira segue a cadeira 3D do site (monobloco com braços e o ícone rosa no encosto).
+Para impressão: o rebordo chrome em vinil espelhado/holográfico; o branco é a linha de corte.
