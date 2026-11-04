@@ -11,8 +11,9 @@ REGRAS QUE NÃO SE QUEBRAM
    Recorte só à volta das letras e do coelho; o interior das letras é sólido (é isso que dá o 3D).
    Nunca usar a versão totalmente transparente como principal (está em "secundario-transparente" só como recurso).
    O chrome é um render 3D, por isso NÃO existe em vetor: para impressão grande usar o PDF/PNG em alta.
-2. Para merch, serigrafia, bordado e LED usar o CHROME FLAT (pasta 02 — proposta A/B/C/D, a escolher)
-   ou o NEON vector (03-neon, SVG) e os ÍCONES (04-icone, SVG). Estes sim são vetoriais ou de cores chapadas.
+2. Logo secundário = ROSA (NEON vector, 03-neon, SVG) ou GLITCH (02-glitch, PNG — chrome com separação rosa/ciano e scanlines,
+   para vídeo, ecrãs e redes). Para merch, serigrafia, bordado e LED usar o NEON vector e os ÍCONES (04-icone, SVG).
+   O "chrome flat" foi descontinuado: não usar (está só em 99-arquivo).
 3. El Conejo (mascote) usa sempre olhos XX visíveis. Nunca chapéu de praia nem óculos de sol.
 4. Não usar fotos reais do artista, letras de músicas nem o logo do artista.
 5. Nome: "Bad Bunnies Show" (sem "Benito" no nome).
@@ -27,7 +28,7 @@ Anton — títulos · Archivo — texto · Doto — detalhes, números, legendas
 Download completo (OTF/TTF): fonts.google.com (procurar cada nome).
 
 CONTEÚDO DAS PASTAS
-01 Logos ............ chrome principal (PNG + PDF), chrome flat (proposta), neon (SVG/PNG), ícones (SVG/PNG)
+01 Logos ............ chrome principal (PNG + PDF), glitch (PNG), neon rosa (SVG/PNG), ícones (SVG/PNG)
 02 El Conejo ........ 4 looks (bandana, capuz, boné, auscultadores) em SVG + PNG
 03 Stickers PR ...... coquí, pava, palmera, dominó, bandeira PR, cadeira (SVG + PNG) + versão com rebordo branco e chrome (pasta com-rebordo-branco-e-chrome)
 04 Frases ........... frases da marca em PNG (hasta abajo, la toca está prendida, mala pero bonita, 100% perreo…)
@@ -39,20 +40,18 @@ CONTEÚDO DAS PASTAS
 FORMATOS DE SAÍDA
 Feed 1080×1350 · Stories/Reels 1080×1920 · Apresentações 1920×1080 · Cartaz A3 (exportar em CMYK, 300 dpi, 3 mm de sangria).
 
-NO CANVA (pedir acesso ao Mário)
-Brand Guidelines (DAHZy3fx464) · Booking v2 (DAHZy-_uXgY) · Sponsors (DAHZxgm7fMU).
-Os assets do logo final já estão carregados no Canva com o nome "BB logo chrome FINAL".
+APRESENTAÇÕES
+Booking, Sponsors e Brand Guidelines estão feitas no Claude (links no documento "Bad Bunnies — Ficheiros"); as versões antigas do Canva ficam como arquivo.
 
 PEDIDOS AO DESIGNER (prioridade)
-1. Fechar o CHROME FLAT a partir da proposta escolhida e vetorizar (AI/SVG) para merch e serigrafia.
+1. Preparar o NEON rosa e os ícones (SVG) em ficheiros de produção para merch e serigrafia (cores Pantone).
 2. Rever a página 8 do Booking (o mockup do telemóvel usa um coelho com óculos — trocar por foto real).
 3. Cartaz A3 + template de flyer por cidade (campos: cidade, data, espaço) com o logo principal.
 4. Kit de merch: t-shirt, bracelete, sticker sheet, lanyard.
 
 STICKERS — REGRA
-Todos os stickers saem com rebordo branco (recorte) + rebordo exterior em chrome.
-Versões prontas em 03 Stickers PR/com-rebordo-branco-e-chrome. A cadeira segue a cadeira 3D do site (monobloco com braços e o ícone rosa no encosto).
-Para impressão: o rebordo chrome em vinil espelhado/holográfico; o branco é a linha de corte.
+Coleção final: 36 stickers, todos em chrome (como o logo), recorte justo ao desenho, filete chrome fino, sem branco e sem transparências.
+Ficheiros no Google Drive, pasta "02 Stickers (coleção chrome)". Para impressão: vinil espelhado/holográfico, linha de corte pelo contorno.
 
 INSTAGRAM (nov 2026)
 11 Instagram relançamento v2 ... posts 4–17 nov na identidade final (logo chrome, stickers chrome, faixa PR) + LEGENDAS-v2.txt
@@ -64,3 +63,6 @@ INSTAGRAM (nov 2026)
 VÍDEOS E ZIPS
 Os MP4 (Reels, teasers, storytelling) e os zips do designer estão no Google Drive, pasta "Bad Bunnies – Media":
 https://drive.google.com/drive/folders/1imhYdydunoqGLIflKs-cNDMvXEHuSklK
+
+99 ARQUIVO
+Versões anteriores e propostas descontinuadas (inclui o chrome flat). Não usar em peças novas.
