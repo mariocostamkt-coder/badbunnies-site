@@ -16,6 +16,10 @@
 .ped-form .field input:focus{border-color:var(--neon);outline:none;box-shadow:0 0 0 3px rgba(255,26,207,.25)}
 .ped-row{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:12px}
 @media (max-width:520px){ .ped-row{grid-template-columns:1fr} }
+.ped-hint{align-self:end;color:var(--prata);font-size:13px;line-height:1.35;padding-bottom:4px}
+.ped-ok{display:flex;gap:10px;align-items:flex-start;font-size:13px;line-height:1.4;color:var(--prata);cursor:pointer}
+.ped-ok input{width:20px;height:20px;flex:0 0 20px;margin:1px 0 0;accent-color:var(--neon)}
+.ped-form .field input.bad{border-color:var(--neon);box-shadow:0 0 0 3px rgba(255,26,207,.25)}
 .ped-msg{font-family:var(--doto);font-weight:700;letter-spacing:.08em;font-size:11px;text-transform:uppercase;color:var(--prata);min-height:14px}
 .ticket{position:relative;background:var(--papel);color:var(--tinta);border-radius:14px;padding:22px 22px 18px;display:none;flex-direction:column;gap:10px;box-shadow:0 0 0 3px var(--neon),0 18px 40px rgba(0,0,0,.5);overflow:hidden}
 .ticket.show{display:flex;animation:slap .55s cubic-bezier(.2,1.6,.4,1) both}
@@ -356,6 +360,21 @@ h1,h2,h3{margin:0;text-wrap:balance}
         <div class="field"><label for="pedSong"><span class="pt">Música</span><span class="es">Canción</span><span class="en">Track</span></label><input id="pedSong" name="song" maxlength="80" required></div>
         <div class="field"><label for="pedArt"><span class="pt">Artista</span><span class="es">Artista</span><span class="en">Artist</span></label><input id="pedArt" name="artist" maxlength="60"></div>
       </div>
+      <div class="doto" style="color:var(--neon);margin-top:6px"><span class="pt">Os teus dados · para te convidarmos para a próxima</span><span class="es">Tus datos · para invitarte a la próxima</span><span class="en">Your details · so we can invite you next time</span></div>
+      <div class="ped-row">
+        <div class="field"><label for="pedNome"><span class="pt">Nome *</span><span class="es">Nombre *</span><span class="en">Name *</span></label><input id="pedNome" name="nome" maxlength="60" autocomplete="name" required></div>
+        <div class="field"><label for="pedIg">Instagram</label><input id="pedIg" name="ig" maxlength="40" placeholder="@" autocapitalize="off" spellcheck="false"></div>
+      </div>
+      <div class="ped-row">
+        <div class="field"><label for="pedEmail">Email</label><input id="pedEmail" name="email" type="email" maxlength="80" autocomplete="email" autocapitalize="off" spellcheck="false"></div>
+        <div class="field"><label for="pedWa">WhatsApp</label><input id="pedWa" name="wa" type="tel" maxlength="20" autocomplete="tel" inputmode="tel" placeholder="+351"></div>
+      </div>
+      <div class="ped-row">
+        <div class="field"><label for="pedCid"><span class="pt">Cidade</span><span class="es">Ciudad</span><span class="en">City</span></label><input id="pedCid" name="cidade" maxlength="40" autocomplete="address-level2"></div>
+        <div class="ped-hint"><span class="pt">Precisamos do nome e de um contacto: email ou WhatsApp.</span><span class="es">Necesitamos tu nombre y un contacto: email o WhatsApp.</span><span class="en">We need your name and one contact: email or WhatsApp.</span></div>
+      </div>
+      <label class="ped-ok"><input type="checkbox" id="pedOk" required><span><span class="pt">Aceito que a Bad Bunnies guarde estes dados para me enviar convites, listas e novidades. Posso pedir para apagar a qualquer momento por DM ou WhatsApp.</span><span class="es">Acepto que Bad Bunnies guarde estos datos para enviarme invitaciones, listas y novedades. Puedo pedir que los borren en cualquier momento por DM o WhatsApp.</span><span class="en">I agree that Bad Bunnies keeps these details to send me invites, lists and news. I can ask for them to be deleted at any time by DM or WhatsApp.</span></span></label>
+      <input type="text" id="pedHp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
       <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap"><button class="btn" type="submit"><span class="pt">Mandar à cabine</span><span class="es">Mandar a la cabina</span><span class="en">Send to the booth</span></button><span class="ped-msg" id="pedMsg" role="status" aria-live="polite"></span></div>
     </form>
     <div class="ticket" id="pedTicket" aria-live="polite">
@@ -471,6 +490,7 @@ const CFG = {
   PLAYLIST:'https://open.spotify.com/playlist/4HaYNptgw1vat7CcL22YYb',
   SPOTIFY_EMBED:'https://open.spotify.com/embed/playlist/4HaYNptgw1vat7CcL22YYb?utm_source=generator&theme=0', // leitor do botão Perreo mode (pode ser uma playlist: /embed/playlist/ID)                                  // Spotify / Apple Music / YouTube
   MIX:     '',                                  // SoundCloud / Mixcloud do último set
+  PEDIDOS_URL: '',                              // URL /exec da Web App do Google Apps Script (folha "Pedidos e contactos de fãs")
   PRESS:   'https://drive.google.com/drive/folders/1iGL3PNtpeuWRrwv3MuMx4TJ37a1nttZx',                                  // link do press kit (Drive / PDF)
   // Vídeos: url = link do reel/YouTube; src = ficheiro .mp4 no repositório (ex.: 'video/aftermovie.mp4'); poster = imagem
   VIDEOS: [
@@ -627,12 +647,12 @@ document.getElementById('copyOut').addEventListener('click',e=>copy(out.textCont
 (function(){
   const form=document.getElementById('pedForm'); if(!form) return;
   const $=id=>document.getElementById(id);
-  const song=$('pedSong'), art=$('pedArt'), msg=$('pedMsg'), tk=$('pedTicket'), list=$('pedList'), cnt=$('pedCount'), foot=$('pedFoot'), L=$('pedL');
+  const song=$('pedSong'), art=$('pedArt'), fNome=$('pedNome'), fIg=$('pedIg'), fEmail=$('pedEmail'), fWa=$('pedWa'), fCid=$('pedCid'), fOk=$('pedOk'), fHp=$('pedHp'), msg=$('pedMsg'), tk=$('pedTicket'), list=$('pedList'), cnt=$('pedCount'), foot=$('pedFoot'), L=$('pedL');
   const lg=()=>document.documentElement.lang||'pt';
   const TX={
-    pt:{need:'Escreve primeiro a música',sent:'Pedido enviado',err:'Não deu para enviar, tenta outra vez',empty:'Ainda ninguém pediu. Sê o primeiro.',live:'Ao vivo · pedidos de toda a gente',local:'Os teus pedidos neste telemóvel',reqs:n=>n+(n===1?' pedido':' pedidos'),x:n=>'×'+n,copied:'Copiado. Cola na tua story e marca @badbunnieslisbon',share:(s,a)=>'O meu reggaetón favorito: '+s+(a?' — '+a:'')+' 🐰 Pede o teu em @badbunnieslisbon'},
-    es:{need:'Escribe primero la canción',sent:'Pedido enviado',err:'No se pudo enviar, inténtalo otra vez',empty:'Nadie ha pedido todavía. Sé el primero.',live:'En directo · pedidos de todo el mundo',local:'Tus pedidos en este móvil',reqs:n=>n+(n===1?' pedido':' pedidos'),x:n=>'×'+n,copied:'Copiado. Pégalo en tu story y etiqueta @badbunnieslisbon',share:(s,a)=>'Mi reggaetón favorito: '+s+(a?' — '+a:'')+' 🐰 Pide el tuyo en @badbunnieslisbon'},
-    en:{need:'Type the track first',sent:'Request sent',err:'Couldn’t send it, try again',empty:'No requests yet. Be the first.',live:'Live · everyone’s requests',local:'Your requests on this phone',reqs:n=>n+(n===1?' request':' requests'),x:n=>'×'+n,copied:'Copied. Paste it in your story and tag @badbunnieslisbon',share:(s,a)=>'My favourite reggaetón: '+s+(a?' — '+a:'')+' 🐰 Request yours at @badbunnieslisbon'}
+    pt:{needName:'Falta o teu nome',needContact:'Deixa um email ou WhatsApp',badEmail:'Esse email não parece certo',needOk:'Falta aceitar para guardarmos os teus dados',sending:'A enviar…',sheet:'Ao vivo · pedidos de toda a gente',need:'Escreve primeiro a música',sent:'Pedido enviado',err:'Não deu para enviar, tenta outra vez',empty:'Ainda ninguém pediu. Sê o primeiro.',live:'Ao vivo · pedidos de toda a gente',local:'Os teus pedidos neste telemóvel',reqs:n=>n+(n===1?' pedido':' pedidos'),x:n=>'×'+n,copied:'Copiado. Cola na tua story e marca @badbunnieslisbon',share:(s,a)=>'O meu reggaetón favorito: '+s+(a?' — '+a:'')+' 🐰 Pede o teu em @badbunnieslisbon'},
+    es:{needName:'Falta tu nombre',needContact:'Deja un email o WhatsApp',badEmail:'Ese email no parece correcto',needOk:'Falta aceptar para guardar tus datos',sending:'Enviando…',sheet:'En directo · pedidos de todo el mundo',need:'Escribe primero la canción',sent:'Pedido enviado',err:'No se pudo enviar, inténtalo otra vez',empty:'Nadie ha pedido todavía. Sé el primero.',live:'En directo · pedidos de todo el mundo',local:'Tus pedidos en este móvil',reqs:n=>n+(n===1?' pedido':' pedidos'),x:n=>'×'+n,copied:'Copiado. Pégalo en tu story y etiqueta @badbunnieslisbon',share:(s,a)=>'Mi reggaetón favorito: '+s+(a?' — '+a:'')+' 🐰 Pide el tuyo en @badbunnieslisbon'},
+    en:{needName:'Your name is missing',needContact:'Leave an email or WhatsApp',badEmail:'That email doesn’t look right',needOk:'Please agree so we can keep your details',sending:'Sending…',sheet:'Live · everyone’s requests',need:'Type the track first',sent:'Request sent',err:'Couldn’t send it, try again',empty:'No requests yet. Be the first.',live:'Live · everyone’s requests',local:'Your requests on this phone',reqs:n=>n+(n===1?' request':' requests'),x:n=>'×'+n,copied:'Copied. Paste it in your story and tag @badbunnieslisbon',share:(s,a)=>'My favourite reggaetón: '+s+(a?' — '+a:'')+' 🐰 Request yours at @badbunnieslisbon'}
   };
   const t=()=>TX[lg()]||TX.pt;
   const REACT=['¡Eso es perreo!','Dale, la cabina ya lo tiene','Hasta abajo con esa','Clásico de la toca','Esa prende la pista','El Conejo aprueba','Perreo sin frenos','Brilla hasta el amanecer'];
@@ -640,6 +660,7 @@ document.getElementById('copyOut').addEventListener('click',e=>copy(out.textCont
   const norm=s=>(s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-z0-9ñ ]/g,' ').replace(/\s+/g,' ').trim();
   const clean=(s,n)=>(s||'').replace(/[\u0000-\u001f<>]/g,'').replace(/\s+/g,' ').trim().slice(0,n);
   const reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let sheetTop=null, sheetTotal=0;
   let mode='local', db=null, uid=null, entries=[], mine=null, seen=new Set(), first=true;
   // local fallback
   const LS='bb-pedidos';
@@ -649,7 +670,8 @@ document.getElementById('copyOut').addEventListener('click',e=>copy(out.textCont
   function render(){
     const T=t(); const agg=new Map();
     entries.forEach(e=>{ const s=clean(e.song,80); if(!s) return; const k=norm(s)+'|'+norm(e.artist); const g=agg.get(k)||{song:s,artist:clean(e.artist,60),n:0,ts:0,me:false}; g.n++; g.ts=Math.max(g.ts,+e.ts||0); if(mine&&norm(mine.song)+'|'+norm(mine.artist)===k) g.me=true; agg.set(k,g); });
-    const top=[...agg.entries()].sort((a,b)=>b[1].n-a[1].n||b[1].ts-a[1].ts).slice(0,10);
+    let top=[...agg.entries()].sort((a,b)=>b[1].n-a[1].n||b[1].ts-a[1].ts).slice(0,10);
+    if(mode==='sheet'&&sheetTop){ top=sheetTop.slice(0,10).map(x=>{ const s=clean(x.song,80), a=clean(x.artist,60), k=norm(s)+'|'+norm(a); return [k,{song:s,artist:a,n:+x.n||1,me:!!(mine&&norm(mine.song)+'|'+norm(mine.artist)===k)}]; }); }
     const max=top.length?top[0][1].n:1;
     list.textContent='';
     if(!top.length){ const d=document.createElement('div'); d.className='empty'; d.textContent=T.empty; list.appendChild(d); }
@@ -658,12 +680,12 @@ document.getElementById('copyOut').addEventListener('click',e=>copy(out.textCont
       const bar=document.createElement('i'); bar.className='bar'; bar.style.width=Math.max(8,Math.round(g.n/max*100))+'%';
       const n=document.createElement('span'); n.className='n'; n.textContent=i+1;
       const tx=document.createElement('div'); const b=document.createElement('b'); b.textContent=g.song; const sm=document.createElement('small'); sm.textContent=g.artist||'—'; tx.append(b,sm);
-      const c=document.createElement('span'); c.className='c'; c.textContent=mode==='live'?T.x(g.n):'';
+      const c=document.createElement('span'); c.className='c'; c.textContent=mode!=='local'?T.x(g.n):'';
       li.append(bar,n,tx,c); list.appendChild(li);
     });
     seen=new Set(top.map(x=>x[0])); first=false;
-    cnt.textContent=mode==='live'?T.reqs(entries.length):'';
-    foot.textContent=mode==='live'?T.live:T.local;
+    cnt.textContent=mode==='live'?T.reqs(entries.length):mode==='sheet'?T.reqs(sheetTotal):'';
+    foot.textContent=mode==='live'?T.live:mode==='sheet'?T.sheet:T.local;
   }
   function burst(){
     if(reduce||!STK.length) return;
@@ -682,15 +704,32 @@ document.getElementById('copyOut').addEventListener('click',e=>copy(out.textCont
   }
   form.addEventListener('submit',async e=>{
     e.preventDefault();
-    const s=clean(song.value,80), a=clean(art.value,60);
-    if(!s){ msg.textContent=t().need; song.focus(); return; }
-    msg.textContent='';
+    const T=t(); [song,fNome,fEmail,fWa].forEach(x=>x.classList.remove('bad'));
+    const bad=(el,m)=>{ msg.textContent=m; el.classList.add('bad'); el.focus(); };
+    const s=clean(song.value,80), a=clean(art.value,60), nome=clean(fNome.value,60), ig=clean(fIg.value,40).replace(/^@*/,'').replace(/\s/g,''), email=clean(fEmail.value,80).toLowerCase(), wa=clean(fWa.value,20).replace(/[^0-9+ ]/g,''), cid=clean(fCid.value,40);
+    if(!s) return bad(song,T.need);
+    if(!nome) return bad(fNome,T.needName);
+    if(!email&&wa.replace(/\D/g,'').length<9) return bad(fEmail,T.needContact);
+    if(email&&!/^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/.test(email)) return bad(fEmail,T.badEmail);
+    if(!fOk.checked){ msg.textContent=T.needOk; fOk.focus(); return; }
+    if(fHp.value){ showTicket(s,a); return; }
+    msg.textContent=T.sending;
     const rec={song:s,artist:a,ts:Date.now()};
-    if(mode==='live'){
-      try{ await db.doc('pedidos/'+uid).set(rec); mine=rec; }
-      catch(err){ if(err&&err.code==='invalid_argument'){ mode='local'; entries=loadLocal(); } else { msg.textContent=t().err; return; } }
+    const contact={nome,ig:ig?'@'+ig:'',email,wa,cidade:cid,consent:true,lang:lg(),ts:rec.ts};
+    let ok=false;
+    if(CFG.PEDIDOS_URL){
+      try{ await fetch(CFG.PEDIDOS_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({...rec,...contact,origem:location.hostname||'site'})}); ok=true; }catch(err){}
     }
-    if(mode==='local'){ mine=rec; entries=[rec,...loadLocal()]; saveLocal(entries); render(); }
+    if(mode==='live'){
+      try{ await db.doc('pedidos/'+uid).set(rec); mine=rec; ok=true; try{ await db.doc('contactos/'+uid).set({...contact,song:s,artist:a}); }catch(e2){} }
+      catch(err){ if(err&&err.code==='invalid_argument'){ mode='local'; entries=loadLocal(); } else if(!ok){ msg.textContent=T.err; return; } }
+    }
+    if(CFG.PEDIDOS_URL&&!ok){ msg.textContent=T.err; return; }
+    msg.textContent='';
+    mine=rec;
+    if(mode!=='live'){ entries=[rec,...loadLocal()]; saveLocal(entries); }
+    if(mode==='sheet'){ setTimeout(loadSheet,2500); }
+    render();
     showTicket(s,a);
   });
   $('tkAgain').addEventListener('click',()=>{ tk.classList.remove('show'); form.hidden=false; song.value=''; art.value=''; song.focus(); });
@@ -700,6 +739,13 @@ document.getElementById('copyOut').addEventListener('click',e=>copy(out.textCont
   });
   document.querySelectorAll('.lang button').forEach(b=>b.addEventListener('click',()=>setTimeout(render,0)));
   render();
+  // Público: ranking vindo da folha Google (só músicas, nunca dados pessoais)
+  async function loadSheet(){
+    if(!CFG.PEDIDOS_URL||mode==='live') return;
+    try{ const r=await fetch(CFG.PEDIDOS_URL+(CFG.PEDIDOS_URL.includes('?')?'&':'?')+'top=10&t='+Date.now()); const j=await r.json();
+      if(j&&Array.isArray(j.top)){ sheetTop=j.top; sheetTotal=+j.total||0; if(mode!=='live') mode='sheet'; render(); } }catch(e){}
+  }
+  loadSheet();
   // Partilhado (claude.ai): todos veem os pedidos de todos, um favorito por pessoa
   (async()=>{
     try{
